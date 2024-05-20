@@ -1,0 +1,60 @@
+name: ereader
+description: "A new Flutter project."
+
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.3 <4.0.0'
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  cupertino_icons: ^1.0.2
+  flutter_svg: ^2.0.10+1
+  auto_route: ^7.3.0
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  build_runner: ^2.4.6
+  auto_route_generator:
+  flutter_lints: ^2.0.0
+
+
+flutter:
+
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/
+    - assets/shapes/
+    - assets/icons/
+    - assets/fonts/
+
+
+  fonts:
+    - family: Gibson
+      fonts:
+        - asset: assets/fonts/Gibson/gibson-bold.otf
+        - asset: assets/fonts/Gibson/gibson-book.otf
+        - asset: assets/fonts/Gibson/gibson-bookitalic.otf
+        - asset: assets/fonts/Gibson/gibson-regular.otf
+        - asset: assets/fonts/Gibson/gibson-semibold.otf
+        - asset: assets/fonts/Gibson/gibson-thin.otf
+        - asset: assets/fonts/Gibson/gibson-thinitalic.otf
+        - asset: assets/fonts/Gibson/gibson-light.otf
+        - asset: assets/fonts/Gibson/gibson-medium.otf
+        - asset: assets/fonts/Gibson/gibson-heavy.otf
+        - asset: assets/fonts/Gibson/gibson-italic.otf
+        - asset: assets/fonts/Gibson/gibson-lightitalic.otf
+        - asset: assets/fonts/Gibson/gibson-mediumitalic.otf
+        - asset: assets/fonts/Gibson/gibson-semibolditalic.otf
+        - asset: assets/fonts/Gibson/gibson-bolditalic.otf
+        - asset: assets/fonts/Gibson/gibson-heavyitalic.otf
+
+
+
