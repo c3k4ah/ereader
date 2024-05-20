@@ -77,4 +77,4 @@ Les contributions sont les bienvenues ! Pour contribuer :
 La création du design de l'application n'a pas été conçu par moi mais une maquette que j'ai trouvé sur [Behance](https://www.behance.net/)
 
 - **Mehvish Iqbal** - *Illustrator, Icon & Graphic Designer* - [Profil behance](https://www.behance.net/Mehvish_Iql)
-- **E.reader (reading app)** - *June 27th 2020* - [Maquette de l'application](https://lien-vers-le-portefeuille-ou-profil-du-designer)
+- **E.reader (reading app)** - *June 27th 2020* - [Maquette de l'application](https://www.behance.net/gallery/99338383/Ereader-(reading-app))
