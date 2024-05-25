@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/app_bar.dart';
 import '../../../../core/widgets/scafold_background.dart';
+import '../../../../core/widgets/over_transparency.dart';
+import '../../domain/entities/section_entity.dart';
+import '../widgets/section_item_widget.dart';
 
 String loremIpsum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.';
@@ -46,37 +49,23 @@ class SectionPage extends StatelessWidget {
                       padding: const EdgeInsets.all(15).copyWith(bottom: 0),
                       height: MediaQuery.sizeOf(context).height,
                       width: MediaQuery.sizeOf(context).width,
-                      child: SingleChildScrollView(
+                      child: ListView.builder(
+                        itemCount: sectionList.length,
                         physics: const BouncingScrollPhysics(),
-                        child: Text(
-                          (loremIpsum * 20),
-                          textAlign: TextAlign.justify,
-                          style: const TextStyle(
-                            color: Colors.white,
-                            fontSize: 10,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        ),
+                        itemBuilder: (context, index) {
+                          SectionEntity section = sectionList[index];
+                          return SectionItemWidget(
+                            section: section,
+                            themeColor: themeColor,
+                          );
+                        },
                       ),
                     ),
                     Align(
-                      alignment: Alignment.center,
-                      child: SizedBox(
-                        height: double.infinity,
-                        width: double.infinity,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            overTransparency(
-                              color: themeColor.secondaryColor ?? Colors.grey,
-                              isReverse: true,
-                            ),
-                            overTransparency(
-                              color: themeColor.secondaryColor ?? Colors.grey,
-                              isReverse: false,
-                            ),
-                          ],
-                        ),
+                      alignment: Alignment.bottomCenter,
+                      child: overTransparency(
+                        color: themeColor.secondaryColor ?? Colors.grey,
+                        isReverse: false,
                       ),
                     )
                   ],
@@ -84,36 +73,6 @@ class SectionPage extends StatelessWidget {
               ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-
-  Widget overTransparency({
-    required Color color,
-    required bool isReverse,
-  }) {
-    List<Color> colors = [
-      color.withOpacity(0.2),
-      color.withOpacity(0.4),
-      color.withOpacity(0.6),
-      color.withOpacity(0.8),
-      color.withOpacity(0.95),
-      color,
-    ];
-    return Container(
-      height: 55,
-      decoration: BoxDecoration(
-        borderRadius: isReverse
-            ? const BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
-              )
-            : null,
-        gradient: LinearGradient(
-          colors: isReverse ? colors.reversed.toList() : colors,
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
         ),
       ),
     );
@@ -149,3 +108,42 @@ class SectionPage extends StatelessWidget {
     );
   }
 }
+
+List<SectionEntity> sectionList = [
+  SectionEntity(
+    id: '1',
+    title: 'Section 1',
+    description: (loremIpsum * 10),
+    date: DateTime.now(),
+  ),
+  SectionEntity(
+    id: '2',
+    title: 'Section 2',
+    description: (loremIpsum * 10),
+    date: DateTime.now(),
+  ),
+  SectionEntity(
+    id: '3',
+    title: 'Section 3',
+    description: (loremIpsum * 10),
+    date: DateTime.now(),
+  ),
+  SectionEntity(
+    id: '4',
+    title: 'Section 4',
+    description: (loremIpsum * 10),
+    date: DateTime.now(),
+  ),
+  SectionEntity(
+    id: '5',
+    title: 'Section 5',
+    description: (loremIpsum * 10),
+    date: DateTime.now(),
+  ),
+  SectionEntity(
+    id: '6',
+    title: 'Section 6',
+    description: (loremIpsum * 10),
+    date: DateTime.now(),
+  ),
+];

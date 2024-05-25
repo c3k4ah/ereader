@@ -12,6 +12,7 @@ Widget customSVG({
     path,
     width: width,
     height: height,
+    fit: BoxFit.contain,
     colorFilter: color != null
         ? ColorFilter.mode(
             color,
