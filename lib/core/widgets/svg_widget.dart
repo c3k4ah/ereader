@@ -6,12 +6,17 @@ Widget customSVG({
   double? width,
   double? height,
   Color? color,
+  BlendMode? blendMode,
 }) {
   return SvgPicture.asset(
     path,
     width: width,
     height: height,
-    colorFilter:
-        color != null ? ColorFilter.mode(color, BlendMode.srcIn) : null,
+    colorFilter: color != null
+        ? ColorFilter.mode(
+            color,
+            blendMode ?? BlendMode.srcIn,
+          )
+        : null,
   );
 }

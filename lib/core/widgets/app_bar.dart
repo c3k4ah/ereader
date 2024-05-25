@@ -12,16 +12,16 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
 
   final VoidCallback? onMenuTap;
   final VoidCallback? onBackTap;
-
+  @override
+  Size get preferredSize => const Size.fromHeight(80);
   @override
   Widget build(BuildContext context) {
     final themeColor = Theme.of(context).extension<AppColors>()!;
-    return PreferredSize(
-      preferredSize: const Size.fromHeight(100),
+    return SafeArea(
       child: Container(
         margin: const EdgeInsets.symmetric(
-          horizontal: 20,
-        ).copyWith(top: 60),
+          horizontal: 10,
+        ),
         padding: const EdgeInsets.symmetric(
           vertical: 5,
         ),
@@ -81,7 +81,4 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       ),
     );
   }
-
-  @override
-  Size get preferredSize => const Size.fromHeight(100);
 }
