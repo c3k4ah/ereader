@@ -58,8 +58,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                     angle: -3.14 / 2,
                     child: customSVG(
                       path: 'assets/icons/arrow.svg',
-                      width: 30,
-                      height: 30,
+                      size: 30,
                       color: themeColor.secondaryColor,
                     ),
                   ),
@@ -71,8 +70,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               onTap: onMenuTap ?? () {},
               child: customSVG(
                 path: 'assets/icons/menu.svg',
-                width: 30,
-                height: 30,
+                size: 30,
                 color: themeColor.secondaryColor,
               ),
             ),

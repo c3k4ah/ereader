@@ -1,3 +1,4 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:ereader/core/extension/date_extension.dart';
 import 'package:flutter/material.dart';
 
@@ -31,7 +32,7 @@ class SectionItemWidget extends StatelessWidget {
           Text(
             section.title,
             style: TextStyle(
-              fontSize: 40,
+              fontSize: 35,
               color: themeColor.backGroundColor ?? Colors.grey,
               fontWeight: FontWeight.normal,
             ),
@@ -45,46 +46,46 @@ class SectionItemWidget extends StatelessWidget {
               color: themeColor.backGroundColor ?? Colors.grey,
             ),
           ),
-          const SizedBox(height: 8),
           Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20),
-                child: Text(
-                  section.date.formatToHuman,
-                  style: TextStyle(
-                    fontSize: 18,
-                    color: themeColor.backGroundColor ?? Colors.grey,
-                    fontWeight: FontWeight.bold,
-                    fontFamily: 'Roboto',
+              Text(
+                section.date.formatToHuman,
+                style: TextStyle(
+                  fontSize: 18,
+                  color: themeColor.backGroundColor ?? Colors.grey,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: 'Roboto',
+                ),
+              ),
+              InkWell(
+                onTap: () {
+                  context.router.pushNamed('/chapter');
+                },
+                child: Transform.rotate(
+                  angle: 3.14 / 2,
+                  child: customSVG(
+                    elevation: .2,
+                    path: 'assets/icons/arrow.svg',
+                    size: 100,
+                    color: themeColor.primaryColor,
                   ),
                 ),
               ),
-              const Spacer(),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                children: [
-                  Transform.rotate(
-                    angle: 3.14 / 2,
-                    child: customSVG(
-                      path: 'assets/icons/arrow.svg',
-                      width: 100,
-                      height: 100,
-                      color: themeColor.primaryColor,
-                    ),
-                  ),
-                  Text(
-                    'Commencer la lecture',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: themeColor.backGroundColor ?? Colors.grey,
-                    ),
-                  ),
-                ],
-              ),
             ],
-          )
+          ),
+          SizedBox(
+            width: double.infinity,
+            child: Text(
+              'Commencer la lecture',
+              textAlign: TextAlign.end,
+              style: TextStyle(
+                fontSize: 16,
+                color: themeColor.backGroundColor ?? Colors.grey,
+              ),
+            ),
+          ),
         ],
       ),
     );

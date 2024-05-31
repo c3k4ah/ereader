@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'app_bar.dart';
 import 'svg_widget.dart';
 
 class ScafoldWithShape extends StatelessWidget {
   final Widget? body;
-  final PreferredSizeWidget? appBar;
   final ShapePosition shapePosition;
+  final bool? addAppBar;
   const ScafoldWithShape({
     super.key,
     this.body,
-    this.appBar,
     required this.shapePosition,
+    this.addAppBar,
   });
 
   @override
@@ -33,8 +34,14 @@ class ScafoldWithShape extends StatelessWidget {
           Scaffold(
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: false,
-            appBar: appBar,
-            body: body,
+            appBar: (addAppBar ?? true)
+                ? CustomAppBar(
+                    onBackTap: () {},
+                  )
+                : null,
+            body: (addAppBar ?? true)
+                ? body
+                : SafeArea(child: body ?? const SizedBox.shrink()),
           ),
         ],
       ),
@@ -90,8 +97,7 @@ class ScafoldShapeType {
           right: -150,
           child: customSVG(
             path: 'assets/shapes/circle.svg',
-            height: 400,
-            width: 400,
+            size: 400,
           ),
         ),
         Positioned(
@@ -131,8 +137,7 @@ class ScafoldShapeType {
           left: -150,
           child: customSVG(
             path: 'assets/shapes/circle.svg',
-            height: 400,
-            width: 400,
+            size: 400,
           ),
         ),
         Positioned(
@@ -172,8 +177,7 @@ class ScafoldShapeType {
           right: -150,
           child: customSVG(
             path: 'assets/shapes/circle.svg',
-            height: 350,
-            width: 350,
+            size: 350,
           ),
         ),
         Positioned(
@@ -199,8 +203,7 @@ class ScafoldShapeType {
           right: -150,
           child: customSVG(
             path: 'assets/shapes/circle.svg',
-            height: 400,
-            width: 400,
+            size: 400,
           ),
         ),
         Positioned(
@@ -208,8 +211,7 @@ class ScafoldShapeType {
           left: 20,
           child: customSVG(
             path: 'assets/shapes/shape.svg',
-            height: 100,
-            width: 100,
+            size: 100,
             color: _darkColor,
           ),
         ),
@@ -218,8 +220,7 @@ class ScafoldShapeType {
           right: 100,
           child: customSVG(
             path: 'assets/shapes/shape.svg',
-            height: 200,
-            width: 200,
+            size: 200,
             color: _darkColor,
           ),
         ),
@@ -260,8 +261,7 @@ class ScafoldShapeType {
           left: -150,
           child: customSVG(
             path: 'assets/shapes/circle.svg',
-            height: 350,
-            width: 350,
+            size: 350,
           ),
         ),
         Positioned(

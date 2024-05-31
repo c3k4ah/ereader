@@ -1,10 +1,14 @@
 import 'package:auto_route/annotations.dart';
+import 'package:ereader/features/section/presentation/manager/article_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/app_bar.dart';
+import '../../../../core/widgets/custom_container.dart';
 import '../../../../core/widgets/scafold_background.dart';
 import '../../../../core/widgets/over_transparency.dart';
+import '../../../../core/widgets/svg_widget.dart';
 import '../../domain/entities/section_entity.dart';
 import '../widgets/section_item_widget.dart';
 
@@ -20,9 +24,6 @@ class SectionPage extends StatelessWidget {
     final themeColor = Theme.of(context).extension<AppColors>()!;
     return ScafoldWithShape(
       shapePosition: ShapePosition.shapesLeftAll,
-      appBar: CustomAppBar(
-        onMenuTap: () {},
-      ),
       body: Container(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height,
@@ -33,42 +34,42 @@ class SectionPage extends StatelessWidget {
           children: [
             headerWidget(),
             Expanded(
-              child: Container(
-                width: MediaQuery.sizeOf(context).width,
-                height: MediaQuery.sizeOf(context).height * .7,
-                decoration: BoxDecoration(
-                  color: themeColor.secondaryColor ?? Colors.grey,
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(30),
-                    topRight: Radius.circular(30),
-                  ),
-                ),
-                child: Stack(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.all(15).copyWith(bottom: 0),
-                      height: MediaQuery.sizeOf(context).height,
-                      width: MediaQuery.sizeOf(context).width,
-                      child: ListView.builder(
-                        itemCount: sectionList.length,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (context, index) {
-                          SectionEntity section = sectionList[index];
-                          return SectionItemWidget(
-                            section: section,
-                            themeColor: themeColor,
-                          );
-                        },
-                      ),
-                    ),
-                    Align(
-                      alignment: Alignment.bottomCenter,
-                      child: overTransparency(
-                        color: themeColor.secondaryColor ?? Colors.grey,
-                        isReverse: false,
-                      ),
-                    )
-                  ],
+              child: CustomContainer(
+                shapeAlignment: ShapeAlignment.right,
+                child: BlocBuilder<ArticleBloc, ArticleState>(
+                  builder: (context, state) {
+                    switch (state.status) {
+                      case ArticleStatus.loading:
+                        return Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: themeColor.backGroundColor,
+                          ),
+                        );
+                      case ArticleStatus.loaded:
+                        return Container(
+                          padding: const EdgeInsets.all(15).copyWith(bottom: 0),
+                          height: MediaQuery.sizeOf(context).height,
+                          width: MediaQuery.sizeOf(context).width,
+                          child: ListView.builder(
+                            itemCount: sectionList.length,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              SectionEntity section = sectionList[index];
+                              return SectionItemWidget(
+                                section: section,
+                                themeColor: themeColor,
+                              );
+                            },
+                          ),
+                        );
+                      case ArticleStatus.error:
+                        return Center(
+                          child: Text(state.error ?? ""),
+                        );
+                      default:
+                        return const SizedBox.shrink();
+                    }
+                  },
                 ),
               ),
             ),

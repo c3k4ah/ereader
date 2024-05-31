@@ -3,21 +3,37 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 Widget customSVG({
   required String path,
-  double? width,
-  double? height,
+  double? size,
   Color? color,
+  double? elevation,
   BlendMode? blendMode,
 }) {
-  return SvgPicture.asset(
-    path,
-    width: width,
-    height: height,
-    fit: BoxFit.contain,
-    colorFilter: color != null
-        ? ColorFilter.mode(
-            color,
-            blendMode ?? BlendMode.srcIn,
-          )
-        : null,
+  return Stack(
+    alignment: AlignmentDirectional.bottomStart,
+    children: [
+      if (elevation != null)
+        SvgPicture.asset(
+          path,
+          width: size != null ? (size + 5) : size,
+          height: size != null ? (size + 5) : size,
+          fit: BoxFit.contain,
+          colorFilter: ColorFilter.mode(
+            Colors.black.withOpacity(elevation),
+            BlendMode.srcIn,
+          ),
+        ),
+      SvgPicture.asset(
+        path,
+        width: size,
+        height: size,
+        fit: BoxFit.contain,
+        colorFilter: color != null
+            ? ColorFilter.mode(
+                color,
+                blendMode ?? BlendMode.srcIn,
+              )
+            : null,
+      ),
+    ],
   );
 }
