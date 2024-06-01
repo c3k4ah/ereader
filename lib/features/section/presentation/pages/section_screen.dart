@@ -1,23 +1,32 @@
 import 'package:auto_route/annotations.dart';
-import 'package:ereader/features/section/presentation/manager/article_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../../core/DTO/entties/article_entity.dart';
 import '../../../../core/theme/custom_colors.dart';
-import '../../../../core/widgets/app_bar.dart';
 import '../../../../core/widgets/custom_container.dart';
 import '../../../../core/widgets/scafold_background.dart';
-import '../../../../core/widgets/over_transparency.dart';
-import '../../../../core/widgets/svg_widget.dart';
 import '../../domain/entities/section_entity.dart';
+import '../manager/article_bloc.dart';
 import '../widgets/section_item_widget.dart';
 
 String loremIpsum =
     'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.';
 
 @RoutePage()
-class SectionPage extends StatelessWidget {
+class SectionPage extends StatefulWidget {
   const SectionPage({super.key});
+
+  @override
+  State<SectionPage> createState() => _SectionPageState();
+}
+
+class _SectionPageState extends State<SectionPage> {
+  @override
+  void initState() {
+    context.read<ArticleBloc>().add(const GetAllArticleEvent());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,12 +60,12 @@ class SectionPage extends StatelessWidget {
                           height: MediaQuery.sizeOf(context).height,
                           width: MediaQuery.sizeOf(context).width,
                           child: ListView.builder(
-                            itemCount: sectionList.length,
+                            itemCount: state.articles.length,
                             physics: const BouncingScrollPhysics(),
                             itemBuilder: (context, index) {
-                              SectionEntity section = sectionList[index];
+                              ArticleEntity section = state.articles[index];
                               return SectionItemWidget(
-                                section: section,
+                                article: section,
                                 themeColor: themeColor,
                               );
                             },
@@ -67,7 +76,7 @@ class SectionPage extends StatelessWidget {
                           child: Text(state.error ?? ""),
                         );
                       default:
-                        return const SizedBox.shrink();
+                        return Text(state.error ?? "");
                     }
                   },
                 ),

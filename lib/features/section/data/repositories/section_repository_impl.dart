@@ -1,9 +1,7 @@
 import 'package:dartz/dartz.dart';
 
-import 'package:ereader/core/DTO/entties/article_entity.dart';
-
-import 'package:ereader/core/error/failure.dart';
-
+import '../../../../core/DTO/entties/article_entity.dart';
+import '../../../../core/error/failure.dart';
 import '../../domain/repository/section_repository.dart';
 import '../datasources/remote/remote_data_source.dart';
 

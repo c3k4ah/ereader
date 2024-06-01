@@ -1,16 +1,20 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:ereader/core/extension/date_extension.dart';
+
 import 'package:flutter/material.dart';
 
+import '../../../../core/DTO/entties/article_entity.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/svg_widget.dart';
-import '../../domain/entities/section_entity.dart';
+import '../../../../core/extension/int_extension.dart';
 
 class SectionItemWidget extends StatelessWidget {
-  final SectionEntity section;
+  final ArticleEntity article;
   final AppColors themeColor;
-  const SectionItemWidget(
-      {super.key, required this.section, required this.themeColor});
+  const SectionItemWidget({
+    super.key,
+    required this.article,
+    required this.themeColor,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +34,7 @@ class SectionItemWidget extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            section.title,
+            "Article ${article.article?.toRoman()}",
             style: TextStyle(
               fontSize: 35,
               color: themeColor.backGroundColor ?? Colors.grey,
@@ -38,7 +42,7 @@ class SectionItemWidget extends StatelessWidget {
             ),
           ),
           Text(
-            section.description,
+            "Sun Tzu dit : ${article.content}",
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
             style: TextStyle(
@@ -50,13 +54,16 @@ class SectionItemWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
-                section.date.formatToHuman,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: themeColor.backGroundColor ?? Colors.grey,
-                  fontWeight: FontWeight.bold,
-                  fontFamily: 'Roboto',
+              Expanded(
+                child: Text(
+                  "${article.title} (${article.originalTitle})",
+                  maxLines: 2,
+                  style: TextStyle(
+                    fontSize: 18,
+                    color: themeColor.backGroundColor ?? Colors.grey,
+                    fontWeight: FontWeight.bold,
+                    fontFamily: 'Roboto',
+                  ),
                 ),
               ),
               InkWell(
