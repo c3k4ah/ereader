@@ -1,18 +1,17 @@
-# E-Reader
+# SunTzu
 
-Bienvenue dans notre application de lecteur de livres en ligne et en local développée avec Flutter. Cette application permet aux utilisateurs de lire des livres, d'accéder à leur profil, et de naviguer facilement entre les chapitres et les sections.
+Une application qui permet d'ecouter et lire les 13 chapitres du livre Art de la guerre.
 
 ## Fonctionnalités
 
-- **Lecture en ligne et en local** : Lisez des livres directement depuis notre bibliothèque en ligne ou téléchargez-les pour une lecture hors ligne.
-- **Gestion de profil** : Créez et gérez votre profil utilisateur pour suivre vos progrès de lecture.
-- **Navigation facile** : Accédez rapidement aux chapitres et sections de vos livres pour une lecture fluide.
+- **Lecture en ligne et en local** : Ecoutez les chapitre directement depuis notre bibliothèque en ligne ou téléchargez-les pour une lecture hors ligne.
+- **Navigation facile** : Accédez rapidement aux chapitres et sections du livre pour une lecture fluide.
 
 ## Structure des pages
 
 1. **Profile** : Page de gestion du profil utilisateur.
-2. **Chapter** : Page de navigation entre les chapitres d'un livre.
-3. **Section** : Page de lecture des sections d'un chapitre.
+2. **Liste des Articles** : Page de navigation entre les chapitres d'un livre.
+3. **Page de lecture** : Page de lecture des sections d'un chapitre.
 
 ## Installation
 
@@ -46,27 +45,13 @@ Pour exécuter ce projet localement, suivez les étapes ci-dessous :
 
 ## Utilisation
 
-### Page de Profil
-
-- **Afficher et modifier les informations du profil** : Accédez à cette page pour visualiser et mettre à jour vos informations personnelles.
-
-### Page de Chapitre
+### Lies des 13 chapitres
 
 - **Liste des chapitres** : Consultez la liste des chapitres du livre que vous lisez actuellement et sélectionnez-en un pour afficher ses sections.
 
 ### Page de Section
 
 - **Lecture des sections** : Lisez le contenu de la section sélectionnée. Vous pouvez naviguer entre les sections et ajuster les paramètres de lecture.
-
-<!-- ## Contribution
-
-Les contributions sont les bienvenues ! Pour contribuer :
-
-1. Forkez le projet.
-2. Créez une branche pour votre fonctionnalité (`git checkout -b nouvelle-fonctionnalite`).
-3. Commitez vos modifications (`git commit -m 'Ajout d'une nouvelle fonctionnalité'`).
-4. Pushez votre branche (`git push origin nouvelle-fonctionnalite`).
-5. Ouvrez une Pull Request. -->
 
 ## Auteurs
 
