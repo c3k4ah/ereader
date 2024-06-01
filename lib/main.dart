@@ -12,3 +12,4 @@ Future<void> main() async {
 
   runApp(const MyApp());
 }
+// dart run build_runner build --delete-conflicting-outputs

@@ -1,8 +1,10 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:flutter/material.dart';
 
 import '../../features/chapter/presentation/pages/chapter_screen.dart';
 import '../../features/profile/presentation/pages/profile_screen.dart';
 import '../../features/section/presentation/pages/section_screen.dart';
+import '../DTO/entties/article_entity.dart';
 
 part 'app_router.gr.dart';
 

@@ -16,9 +16,13 @@ abstract class _$AppRouter extends RootStackRouter {
   @override
   final Map<String, PageFactory> pagesMap = {
     ChapterRoute.name: (routeData) {
+      final args = routeData.argsAs<ChapterRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const ChapterPage(),
+        child: ChapterPage(
+          key: args.key,
+          article: args.article,
+        ),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -38,16 +42,40 @@ abstract class _$AppRouter extends RootStackRouter {
 
 /// generated route for
 /// [ChapterPage]
-class ChapterRoute extends PageRouteInfo<void> {
-  const ChapterRoute({List<PageRouteInfo>? children})
-      : super(
+class ChapterRoute extends PageRouteInfo<ChapterRouteArgs> {
+  ChapterRoute({
+    Key? key,
+    required ArticleEntity article,
+    List<PageRouteInfo>? children,
+  }) : super(
           ChapterRoute.name,
+          args: ChapterRouteArgs(
+            key: key,
+            article: article,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'ChapterRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<ChapterRouteArgs> page =
+      PageInfo<ChapterRouteArgs>(name);
+}
+
+class ChapterRouteArgs {
+  const ChapterRouteArgs({
+    this.key,
+    required this.article,
+  });
+
+  final Key? key;
+
+  final ArticleEntity article;
+
+  @override
+  String toString() {
+    return 'ChapterRouteArgs{key: $key, article: $article}';
+  }
 }
 
 /// generated route for

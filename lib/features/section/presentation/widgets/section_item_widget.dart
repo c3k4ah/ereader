@@ -3,6 +3,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/DTO/entties/article_entity.dart';
+import '../../../../core/routes/app_router.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/svg_widget.dart';
 import '../../../../core/extension/int_extension.dart';
@@ -68,7 +69,7 @@ class SectionItemWidget extends StatelessWidget {
               ),
               InkWell(
                 onTap: () {
-                  context.router.pushNamed('/chapter');
+                  context.router.push(ChapterRoute(article: article));
                 },
                 child: Transform.rotate(
                   angle: 3.14 / 2,

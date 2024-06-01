@@ -1,13 +1,19 @@
 import 'package:auto_route/annotations.dart';
+import 'package:ereader/core/extension/int_extension.dart';
 import 'package:flutter/material.dart';
 
+import '../../../../core/DTO/entties/article_entity.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/custom_container.dart';
 import '../../../../core/widgets/scafold_background.dart';
 
 @RoutePage()
 class ChapterPage extends StatefulWidget {
-  const ChapterPage({super.key});
+  final ArticleEntity article;
+  const ChapterPage({
+    super.key,
+    required this.article,
+  });
 
   @override
   State<ChapterPage> createState() => _ChapterPageState();
@@ -21,6 +27,9 @@ class _ChapterPageState extends State<ChapterPage> {
     return ScafoldWithShape(
       shapePosition: ShapePosition.shapesBigRight,
       addAppBar: !isFullScreen,
+      onBackTap: () {
+        Navigator.pop(context);
+      },
       body: Container(
         width: MediaQuery.sizeOf(context).width,
         height: MediaQuery.sizeOf(context).height,
@@ -46,6 +55,17 @@ class _ChapterPageState extends State<ChapterPage> {
                         width: double.infinity,
                         decoration: const BoxDecoration(
                           color: Colors.transparent,
+                        ),
+                        child: SingleChildScrollView(
+                          child: Text(
+                            widget.article.content ?? '',
+                            textAlign: TextAlign.justify,
+                            style: TextStyle(
+                              fontSize: 15,
+                              color: themeColor.backGroundColor ?? Colors.white,
+                              fontFamily: 'Roboto',
+                            ),
+                          ),
                         ),
                       ),
                     ),
@@ -139,20 +159,20 @@ class _ChapterPageState extends State<ChapterPage> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Column(
+          Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Artice 3',
-                style: TextStyle(
+                "Article ${widget.article.article?.toRoman()}",
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
                 ),
               ),
               Text(
-                'Le Royaume',
-                style: TextStyle(
-                  fontSize: 30,
+                widget.article.title ?? '',
+                style: const TextStyle(
+                  fontSize: 20,
                   fontWeight: FontWeight.w500,
                 ),
               ),

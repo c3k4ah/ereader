@@ -1,18 +1,38 @@
 import 'package:flutter/material.dart';
 
 import 'app_bar.dart';
+import 'app_drawer.dart';
 import 'svg_widget.dart';
 
-class ScafoldWithShape extends StatelessWidget {
+class ScafoldWithShape extends StatefulWidget {
   final Widget? body;
   final ShapePosition shapePosition;
   final bool? addAppBar;
+  final Function()? onBackTap;
   const ScafoldWithShape({
     super.key,
     this.body,
     required this.shapePosition,
     this.addAppBar,
+    this.onBackTap,
   });
+
+  @override
+  State<ScafoldWithShape> createState() => _ScafoldWithShapeState();
+}
+
+class _ScafoldWithShapeState extends State<ScafoldWithShape> {
+  final GlobalKey<ScaffoldState> _scaforldKey = GlobalKey();
+
+  // @override
+  // void initState() {
+  //   if (widget.addAppBar ?? true) {
+  //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+  //       _scaforldKey.currentState!.openEndDrawer();
+  //     });
+  //   }
+  //   super.initState();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -28,20 +48,26 @@ class ScafoldWithShape extends StatelessWidget {
               color: Color(0xFFf4e9dc),
             ),
             child: Stack(
-              children: ScafoldShapeType().getShapes(shapePosition),
+              children: ScafoldShapeType().getShapes(widget.shapePosition),
             ),
           ),
           Scaffold(
+            endDrawer: const AppDrawer(),
+            endDrawerEnableOpenDragGesture: true,
+            key: _scaforldKey,
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: false,
-            appBar: (addAppBar ?? true)
+            appBar: (widget.addAppBar ?? true)
                 ? CustomAppBar(
-                    onBackTap: () {},
+                    onBackTap: widget.onBackTap,
+                    onMenuTap: () {
+                      _scaforldKey.currentState!.openEndDrawer();
+                    },
                   )
                 : null,
-            body: (addAppBar ?? true)
-                ? body
-                : SafeArea(child: body ?? const SizedBox.shrink()),
+            body: (widget.addAppBar ?? true)
+                ? widget.body
+                : SafeArea(child: widget.body ?? const SizedBox.shrink()),
           ),
         ],
       ),

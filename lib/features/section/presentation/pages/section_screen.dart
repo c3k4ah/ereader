@@ -6,12 +6,8 @@ import '../../../../core/DTO/entties/article_entity.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/custom_container.dart';
 import '../../../../core/widgets/scafold_background.dart';
-import '../../domain/entities/section_entity.dart';
 import '../manager/article_bloc.dart';
 import '../widgets/section_item_widget.dart';
-
-String loremIpsum =
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec nec justo eget felis facilisis fermentum. Aliquam porttitor mauris sit amet orci. Aenean dignissim pellentesque felis.';
 
 @RoutePage()
 class SectionPage extends StatefulWidget {
@@ -118,42 +114,3 @@ class _SectionPageState extends State<SectionPage> {
     );
   }
 }
-
-List<SectionEntity> sectionList = [
-  SectionEntity(
-    id: '1',
-    title: 'Section 1',
-    description: (loremIpsum * 10),
-    date: DateTime.now(),
-  ),
-  SectionEntity(
-    id: '2',
-    title: 'Section 2',
-    description: (loremIpsum * 10),
-    date: DateTime.now(),
-  ),
-  SectionEntity(
-    id: '3',
-    title: 'Section 3',
-    description: (loremIpsum * 10),
-    date: DateTime.now(),
-  ),
-  SectionEntity(
-    id: '4',
-    title: 'Section 4',
-    description: (loremIpsum * 10),
-    date: DateTime.now(),
-  ),
-  SectionEntity(
-    id: '5',
-    title: 'Section 5',
-    description: (loremIpsum * 10),
-    date: DateTime.now(),
-  ),
-  SectionEntity(
-    id: '6',
-    title: 'Section 6',
-    description: (loremIpsum * 10),
-    date: DateTime.now(),
-  ),
-];

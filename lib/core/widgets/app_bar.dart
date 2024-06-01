@@ -40,14 +40,26 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Text(
-              "L'art de la guerre",
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w700,
-                fontFamily: 'Roboto',
-              ),
-            ),
+            (onBackTap == null)
+                ? const Text(
+                    "L'art de la guerre",
+                    style: TextStyle(
+                      fontSize: 25,
+                      fontWeight: FontWeight.w700,
+                      fontFamily: 'Roboto',
+                    ),
+                  )
+                : InkWell(
+                    onTap: onBackTap,
+                    child: Transform.rotate(
+                      angle: -3.14 / 2,
+                      child: customSVG(
+                        path: 'assets/icons/arrow.svg',
+                        size: 50,
+                        color: themeColor.secondaryColor,
+                      ),
+                    ),
+                  ),
             const Spacer(),
             InkWell(
               onTap: onMenuTap ?? () {},
