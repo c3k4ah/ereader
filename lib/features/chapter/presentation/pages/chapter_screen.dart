@@ -1,11 +1,12 @@
 import 'package:auto_route/annotations.dart';
-import 'package:ereader/core/extension/int_extension.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../core/DTO/entties/article_entity.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/custom_container.dart';
 import '../../../../core/widgets/scafold_background.dart';
+import '../../../../core/extension/int_extension.dart';
+import '../../../../core/widgets/snack_bar.dart';
 
 @RoutePage()
 class ChapterPage extends StatefulWidget {
@@ -123,7 +124,9 @@ class _ChapterPageState extends State<ChapterPage> {
           ),
           const Spacer(),
           IconButton(
-            onPressed: () {},
+            onPressed: () {
+              showSnackBar(context,'Cet article ne possède pas encore de format audio !');
+            },
             icon: Icon(
               Icons.mic_off,
               size: 25,

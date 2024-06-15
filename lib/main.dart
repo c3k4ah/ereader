@@ -7,9 +7,7 @@ import 'dependency_injection/injection.dart';
 Future<void> main() async {
   await initializeDateFormatting('fr_FR', null);
   WidgetsFlutterBinding.ensureInitialized();
-
   await initInjection();
-
   runApp(const MyApp());
 }
 // dart run build_runner build --delete-conflicting-outputs

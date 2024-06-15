@@ -61,7 +61,6 @@ class _ScafoldWithShapeState extends State<ScafoldWithShape> {
                 ? CustomAppBar(
                     onBackTap: widget.onBackTap,
                     onMenuTap: () {
-                      _scaforldKey.currentState!.openEndDrawer();
                     },
                   )
                 : null,
