@@ -9,7 +9,6 @@ Une application qui permet d'ecouter et lire les 13 chapitres du livre Art de la
 
 ## Structure des pages
 
-1. **Profile** : Page de gestion du profil utilisateur.
 2. **Liste des Articles** : Page de navigation entre les chapitres d'un livre.
 3. **Page de lecture** : Page de lecture des sections d'un chapitre.
 

@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 
-import '../../../../core/DTO/entties/article_entity.dart';
+import '../../../../core/DTO/entities/article_entity.dart';
 import '../../../../core/error/failure.dart';
 import '../../../../core/usecase/usecase.dart';
 import '../repository/section_repository.dart';

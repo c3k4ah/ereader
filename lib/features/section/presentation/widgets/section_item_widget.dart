@@ -2,7 +2,7 @@ import 'package:auto_route/auto_route.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../../../core/DTO/entties/article_entity.dart';
+import '../../../../core/DTO/entities/article_entity.dart';
 import '../../../../core/routes/app_router.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/svg_widget.dart';
@@ -46,6 +46,7 @@ class SectionItemWidget extends StatelessWidget {
             "Sun Tzu dit : ${article.content}",
             maxLines: 3,
             overflow: TextOverflow.ellipsis,
+            textAlign: TextAlign.justify,
             style: TextStyle(
               fontSize: 16,
               color: themeColor.backGroundColor ?? Colors.grey,

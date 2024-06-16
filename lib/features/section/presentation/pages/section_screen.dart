@@ -2,7 +2,7 @@ import 'package:auto_route/annotations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../core/DTO/entties/article_entity.dart';
+import '../../../../core/DTO/entities/article_entity.dart';
 import '../../../../core/theme/custom_colors.dart';
 import '../../../../core/widgets/custom_container.dart';
 import '../../../../core/widgets/scafold_background.dart';
@@ -27,7 +27,7 @@ class _SectionPageState extends State<SectionPage> {
   @override
   Widget build(BuildContext context) {
     final themeColor = Theme.of(context).extension<AppColors>()!;
-    return ScafoldWithShape(
+    return ScaffoldWithShape(
       shapePosition: ShapePosition.shapesLeftAll,
       body: Container(
         width: MediaQuery.sizeOf(context).width,
@@ -94,14 +94,15 @@ class _SectionPageState extends State<SectionPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                'Select the Story',
+                "Choisissez l'article",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.normal,
+                  fontFamily: 'Roboto',
                 ),
               ),
               Text(
-                'Of your choice',
+                'De votre choix',
                 style: TextStyle(
                   fontSize: 30,
                   fontWeight: FontWeight.w500,

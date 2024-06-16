@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
       providers: blocProviders,
       child: MaterialApp.router(
-        title: 'E-Reader',
+        title: 'SunTzu-Reader',
         theme: appTheme.light,
         routerConfig: router.config(),
         debugShowCheckedModeBanner: false,

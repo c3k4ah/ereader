@@ -1,4 +1,4 @@
-import '../entties/article_entity.dart';
+import '../entities/article_entity.dart';
 
 class ArticleModel extends ArticleEntity {
   const ArticleModel({

@@ -4,12 +4,12 @@ import 'app_bar.dart';
 import 'app_drawer.dart';
 import 'svg_widget.dart';
 
-class ScafoldWithShape extends StatefulWidget {
+class ScaffoldWithShape extends StatefulWidget {
   final Widget? body;
   final ShapePosition shapePosition;
   final bool? addAppBar;
   final Function()? onBackTap;
-  const ScafoldWithShape({
+  const ScaffoldWithShape({
     super.key,
     this.body,
     required this.shapePosition,
@@ -18,21 +18,11 @@ class ScafoldWithShape extends StatefulWidget {
   });
 
   @override
-  State<ScafoldWithShape> createState() => _ScafoldWithShapeState();
+  State<ScaffoldWithShape> createState() => _ScaffoldWithShapeState();
 }
 
-class _ScafoldWithShapeState extends State<ScafoldWithShape> {
-  final GlobalKey<ScaffoldState> _scaforldKey = GlobalKey();
-
-  // @override
-  // void initState() {
-  //   if (widget.addAppBar ?? true) {
-  //     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-  //       _scaforldKey.currentState!.openEndDrawer();
-  //     });
-  //   }
-  //   super.initState();
-  // }
+class _ScaffoldWithShapeState extends State<ScaffoldWithShape> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -54,13 +44,14 @@ class _ScafoldWithShapeState extends State<ScafoldWithShape> {
           Scaffold(
             endDrawer: const AppDrawer(),
             endDrawerEnableOpenDragGesture: true,
-            key: _scaforldKey,
+            key: _scaffoldKey,
             backgroundColor: Colors.transparent,
             extendBodyBehindAppBar: false,
             appBar: (widget.addAppBar ?? true)
                 ? CustomAppBar(
                     onBackTap: widget.onBackTap,
                     onMenuTap: () {
+                      _scaffoldKey.currentState!.openEndDrawer();
                     },
                   )
                 : null,
